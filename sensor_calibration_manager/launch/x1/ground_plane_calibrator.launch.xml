@@ -1,7 +1,7 @@
 <launch>
   <let name="base_frame" value="base_link"/>
   <let name="lidar_frame" value="velodyne_top"/>
-  <let name="pointcloud_topic" value="/sensing/lidar/top/pointcloud_raw_ex"/>
+  <let name="pointcloud_topic" value="/sensing/lidar/front/pointcloud_raw_ex"/>
 
   <arg name="max_inlier_distance" default="0.03" description="Maximum distance in meters to consider inliers in plane estimation"/>
   <arg name="min_plane_points" default="500" description="Minimum number of points for an hypothesis for be considered valid"/>
