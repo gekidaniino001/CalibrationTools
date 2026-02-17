@@ -1,0 +1,44 @@
+<launch>
+  <let name="base_frame" value="base_link"/>
+  <let name="source_frame" value="velodyne_rear"/>
+  <let name="target_frame" value="velodyne_top"/>
+  <let name="source_pointcloud_topic" value="/sensing/lidar/rear/pointcloud_raw_ex"/>
+  <let name="target_pointcloud_topic" value="/sensing/lidar/front/pointcloud_raw_ex"/>
+
+  <arg name="broadcast_calibration_tf" default="false" description="Broadcast the calibration TF"/>
+  <arg name="filter_estimations" default="true" description="Filter estimations using a simple filter"/>
+
+  <arg name="max_calibration_range" default="60.0" description="Max range of the pointcloud to use during calibration"/>
+  <arg name="max_corr_distance" default="0.5" description="Maximum accepted distance for correspondences"/>
+  <arg name="max_iterations" default="100" description="Maximum number of ICP iterations for calibration"/>
+
+  <arg
+    name="min_z"
+    default="0.5"
+    description="Minimum z-value to use for calibration (in base coordinates). Wide ranges induce more error due to flattening, but narrower ranges may not have enough information"
+  />
+  <arg name="max_z" default="1.5" description="Maximum z-value to use for calibration (in base coordinates)"/>
+
+  <arg name="rviz" default="true" description="Launch rviz"/>
+
+  <!-- lidar-lidar 2d calibrator -->
+  <include file="$(find-pkg-share lidar_to_lidar_2d_calibrator)/launch/calibrator.launch.xml">
+    <arg name="base_frame" value="$(var base_frame)"/>
+    <arg name="calibration_service_name" value="calibrate_lidar_lidar"/>
+
+    <arg name="broadcast_calibration_tf" value="$(var broadcast_calibration_tf)"/>
+    <arg name="filter_estimations" value="$(var filter_estimations)"/>
+
+    <arg name="max_calibration_range" value="$(var max_calibration_range)"/>
+    <arg name="max_corr_distance" value="$(var max_corr_distance)"/>
+    <arg name="max_iterations" value="$(var max_iterations)"/>
+
+    <arg name="source_pointcloud_topic" value="$(var source_pointcloud_topic)"/>
+    <arg name="target_pointcloud_topic" value="$(var target_pointcloud_topic)"/>
+
+    <arg name="min_z" value="$(var min_z)"/>
+    <arg name="max_z" value="$(var max_z)"/>
+
+    <arg name="rviz" value="$(var rviz)"/>
+  </include>
+</launch>
