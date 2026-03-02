@@ -12,7 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#if __has_include(<autoware/universe_utils/geometry/geometry.hpp>)
 #include <autoware/universe_utils/geometry/geometry.hpp>
+#else
+#include <autoware_universe_utils/geometry/geometry.hpp>
+namespace autoware
+{
+namespace universe_utils = ::autoware_universe_utils;
+}
+#endif
 #include <ground_plane_calibrator/ground_plane_calibrator.hpp>
 #include <tf2_eigen/tf2_eigen.hpp>
 

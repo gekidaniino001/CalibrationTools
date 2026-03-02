@@ -13,7 +13,15 @@
 // limitations under the License.
 
 #include <Eigen/Core>
+#if __has_include(<autoware/universe_utils/geometry/geometry.hpp>)
 #include <autoware/universe_utils/geometry/geometry.hpp>
+#else
+#include <autoware_universe_utils/geometry/geometry.hpp>
+namespace autoware
+{
+namespace universe_utils = ::autoware_universe_utils;
+}
+#endif
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/core/affine.hpp>

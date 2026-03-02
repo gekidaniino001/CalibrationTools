@@ -13,7 +13,15 @@
 // limitations under the License.
 
 #include <Eigen/Dense>
+#if __has_include(<autoware/universe_utils/geometry/geometry.hpp>)
 #include <autoware/universe_utils/geometry/geometry.hpp>
+#else
+#include <autoware_universe_utils/geometry/geometry.hpp>
+namespace autoware
+{
+namespace universe_utils = ::autoware_universe_utils;
+}
+#endif
 #include <rclcpp/logging.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <tf2_eigen/tf2_eigen.hpp>
