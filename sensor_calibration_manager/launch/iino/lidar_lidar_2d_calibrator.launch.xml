@@ -3,7 +3,7 @@
   <let name="source_frame" value="velodyne_rear"/>
   <let name="target_frame" value="velodyne_top"/>
   <let name="source_pointcloud_topic" value="/sensing/lidar/rear/pointcloud_raw_ex"/>
-  <let name="target_pointcloud_topic" value="/sensing/lidar/front/pointcloud_raw_ex"/>
+  <let name="target_pointcloud_topic" value="/sensing/lidar/top/pointcloud_raw_ex"/>
 
   <arg name="broadcast_calibration_tf" default="false" description="Broadcast the calibration TF"/>
   <arg name="filter_estimations" default="true" description="Filter estimations using a simple filter"/>
